@@ -2,12 +2,21 @@
 import { useState } from 'react';
 import './App.css'
 
+import Swal from 'sweetalert2'
+
+
 function App() {
 
-  var result;
   const [firstOperation, setFirstOperation] = useState(null);
   const [secondOperation, setSecondOperation] = useState(null);
-  
+  function handleClearInput(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'The under construction...',
+    
+    })
+  }
 function handleInput(el) {
 
   if(firstOperation == null){
@@ -21,31 +30,50 @@ function handleInput(el) {
 const handleAddition = () => {
 
   let result = parseInt(firstOperation)+parseInt(secondOperation);
-  alert(result);
+  Swal.fire(
+    'Good job!',
+    'Answer: '+result.toString(),
+    'success'
+  )
   setFirstOperation(null);
   setSecondOperation(null);
 }
 const handleSubtraction = () => {
 
   let result = parseInt(firstOperation)-parseInt(secondOperation);
-  alert(result);
+  Swal.fire(
+    'Good job!',
+    'Answer: '+result.toString(),
+    'success'
+  )
   setFirstOperation(null);
   setSecondOperation(null);
 }
 const handleDivision= () => {
 
   let result = parseFloat(firstOperation)/parseFloat(secondOperation);
-  alert(result);
+  Swal.fire(
+    'Good job!',
+    'Answer: '+result.toString(),
+    'success'
+  )
   setFirstOperation(null);
   setSecondOperation(null);
 }
 const handleMultiplication = () => {
 
   let result = parseInt(firstOperation)*parseInt(secondOperation);
-  alert(result);
+  Swal.fire(
+    'Good job!',
+    'Answer: '+result.toString(),
+    'success'
+  )
   setFirstOperation(null);
   setSecondOperation(null);
 }
+//if (setFirstOperation==null) Swal.fire('Just use the digits and select the action last.')
+  
+
   return (
     <>
       <div className='App'>
@@ -64,7 +92,7 @@ const handleMultiplication = () => {
           <button onClick={handleInput} value="7">7</button>
           <button onClick={handleInput} value="8">8</button>
           <button onClick={handleInput} value="9">9</button><br></br>
-          <button onClick={handleInput} value=" ">C</button>
+          <button onClick={handleClearInput} value=" ">C</button>
           
 
           
