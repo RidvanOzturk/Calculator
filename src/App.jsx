@@ -1,12 +1,10 @@
 
 import { useState } from 'react';
 import './App.css'
-
 import Swal from 'sweetalert2'
 
 
 function App() {
-
   const [firstOperation, setFirstOperation] = useState(null);
   const [secondOperation, setSecondOperation] = useState(null);
   function handleClearInput(){
@@ -14,7 +12,6 @@ function App() {
       icon: 'error',
       title: 'Oops...',
       text: 'The under construction...',
-    
     })
   }
 function handleInput(el) {
@@ -25,10 +22,11 @@ function handleInput(el) {
   else if(secondOperation == null){
     setSecondOperation(el.target.value)
   }
+
   console.log("First: " + firstOperation + " | Second: " + secondOperation);
 }
 const handleAddition = () => {
-
+  
   let result = parseInt(firstOperation)+parseInt(secondOperation);
   Swal.fire(
     'Good job!',
@@ -71,17 +69,14 @@ const handleMultiplication = () => {
   setFirstOperation(null);
   setSecondOperation(null);
 }
-//if (setFirstOperation==null) Swal.fire('Just use the digits and select the action last.')
-  
-
   return (
     <>
       <div className='App'>
         <div className='Calculator'>
-          <button onClick={handleAddition}>+</button>
-          <button onClick={handleSubtraction}>-</button>
-          <button onClick={handleMultiplication}>*</button>
-          <button onClick={handleDivision}>/</button><br></br>
+          <button type='operation' onClick={handleAddition}>+</button>
+          <button type='operation' onClick={handleSubtraction}>-</button>
+          <button type='operation' onClick={handleMultiplication}>*</button>
+          <button type='operation' onClick={handleDivision}>/</button><br></br>
        
           <button onClick={handleInput} value="1">1</button>
           <button onClick={handleInput} value="2">2</button>
@@ -93,12 +88,8 @@ const handleMultiplication = () => {
           <button onClick={handleInput} value="8">8</button>
           <button onClick={handleInput} value="9">9</button><br></br>
           <button onClick={handleClearInput} value=" ">C</button>
-          
-
-          
         </div></div>
     </>
   )
 }
-
 export default App
