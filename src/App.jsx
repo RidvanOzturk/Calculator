@@ -1,83 +1,30 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css'
 import Swal from 'sweetalert2'
 
 
 function App() {
-  const [firstOperation, setFirstOperation] = useState(null);
-  const [secondOperation, setSecondOperation] = useState(null);
-  function handleClearInput(){
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'The under construction...',
-    })
+
+  const [operation, setOperation] = useState("");
+  const handleInput = (e) => {
+    setOperation(operation + e.target.value)
   }
-function handleInput(el) {
-
-  if(firstOperation == null){
-    setFirstOperation(el.target.value)
+  const equalCalculate = () => {
+    console.log(eval(operation));
   }
-  else if(secondOperation == null){
-    setSecondOperation(el.target.value)
-  }
-
-  console.log("First: " + firstOperation + " | Second: " + secondOperation);
-}
-const handleAddition = () => {
-  
-  let result = parseInt(firstOperation)+parseInt(secondOperation);
-  Swal.fire(
-    'Good job!',
-    'Answer: '+result.toString(),
-    'success'
-  )
-  setFirstOperation(null);
-  setSecondOperation(null);
-}
-const handleSubtraction = () => {
-
-  let result = parseInt(firstOperation)-parseInt(secondOperation);
-  Swal.fire(
-    'Good job!',
-    'Answer: '+result.toString(),
-    'success'
-  )
-  setFirstOperation(null);
-  setSecondOperation(null);
-}
-const handleDivision= () => {
-
-  let result = parseFloat(firstOperation)/parseFloat(secondOperation);
-  Swal.fire(
-    'Good job!',
-    'Answer: '+result.toString(),
-    'success'
-  )
-  setFirstOperation(null);
-  setSecondOperation(null);
-}
-const handleMultiplication = () => {
-
-  let result = parseInt(firstOperation)*parseInt(secondOperation);
-  Swal.fire(
-    'Good job!',
-    'Answer: '+result.toString(),
-    'success'
-  )
-  setFirstOperation(null);
-  setSecondOperation(null);
-}
+  useEffect(() => {
+    console.log(operation);
+  },[operation]);
   return (
     <>
       <div className='App'>
         <div className='Calculator'>
-          <button type='operation' onClick={handleAddition}>+</button>
-          <button type='operation' onClick={handleSubtraction}>-</button>
-          <button type='operation' onClick={handleMultiplication}>*</button>
-          <button type='operation' onClick={handleDivision}>/</button><br></br>
-       
+            <button onClick={handleInput} value="+">+</button>
+            <button onClick={handleInput} value="-">-</button>
+            <button onClick={handleInput} value="/">/</button>
+            <button onClick={handleInput} value="*">*</button><br></br><br></br><br></br><br></br>
+            <button onClick={equalCalculate} value="=">=</button><br></br>
           <button onClick={handleInput} value="1">1</button>
           <button onClick={handleInput} value="2">2</button>
           <button onClick={handleInput} value="3">3</button><br></br>
@@ -87,7 +34,7 @@ const handleMultiplication = () => {
           <button onClick={handleInput} value="7">7</button>
           <button onClick={handleInput} value="8">8</button>
           <button onClick={handleInput} value="9">9</button><br></br>
-          <button onClick={handleClearInput} value=" ">C</button>
+          <button onClick={handleInput} value=" ">C</button>
         </div></div>
     </>
   )
