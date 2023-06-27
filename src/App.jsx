@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react';
 import './App.css'
 import Swal from 'sweetalert2'
+import { Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
@@ -13,12 +15,32 @@ function App() {
   const clearInput = () =>{
     setOperation("");
   }
+  const dividingDigits = () => {
+    // var num = setOperation;
+    // while (num !=0 ) {
+    //   digits.push(num % 10);
+    //   num = Math.trunc(num/10);
+    // }
+    // digits.reverse();
+    // console.log("digits");
+    var number = setOperation,
+    output = [],
+    sNumber = number.toString();
+
+for (var i = 0, len = sNumber.length; i < len; i += 1) {
+    output.push(+sNumber.charAt(i));
+}
+
+console.log(output);
+
+
+  }
   const equalCalculate = () => {
     if (operation == "") {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'You must enter a number first.',
+        text: 'You must enter numbers first.',
         footer: 'Oh dude.'
       })
     }
@@ -42,7 +64,9 @@ function App() {
             <button onClick={handleInput} value="+">+</button>
             <button onClick={handleInput} value="-">-</button>
             <button onClick={handleInput} value="/">/</button>
-            <button onClick={handleInput} value="*">*</button><br></br><br></br>
+            <button onClick={handleInput} value="*">*</button>
+            <Button variant="outline-danger" onClick={dividingDigits}>Danger</Button>{' '}
+            <br></br><br></br>
             <input onChange={change} value={operation}></input><br></br>
             <button onClick={equalCalculate} value="=">=</button><br></br>
           <button onClick={handleInput} value="1">1</button>
