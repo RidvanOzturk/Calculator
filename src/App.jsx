@@ -11,15 +11,23 @@ function App() {
     setOperation(operation + e.target.value)
   }
   const clearInput = () =>{
-    setOperation("0");
+    setOperation("");
   }
   const equalCalculate = () => {
-    
+    if (operation == "") {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'You must enter a number first.',
+        footer: 'Oh dude.'
+      })
+    }
     Swal.fire(
       'Good job!',
       eval(operation).toString(),
       'success'
     )
+    setOperation("");
   }
   const change = e => {
     setOperation(e.target.value)
