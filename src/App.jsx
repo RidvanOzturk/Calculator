@@ -10,9 +10,19 @@ function App() {
   const handleInput = (e) => {
     setOperation(operation + e.target.value)
   }
+  const clearInput = () =>{
+    setOperation("0");
+  }
   const equalCalculate = () => {
-    console.log(eval(operation));
-    operation==0;
+    
+    Swal.fire(
+      'Good job!',
+      eval(operation).toString(),
+      'success'
+    )
+  }
+  const change = e => {
+    setOperation(e.target.value)
   }
   useEffect(() => {
     console.log(operation);
@@ -24,7 +34,8 @@ function App() {
             <button onClick={handleInput} value="+">+</button>
             <button onClick={handleInput} value="-">-</button>
             <button onClick={handleInput} value="/">/</button>
-            <button onClick={handleInput} value="*">*</button><br></br><br></br><br></br><br></br>
+            <button onClick={handleInput} value="*">*</button><br></br><br></br>
+            <input onChange={change} value={operation}></input><br></br>
             <button onClick={equalCalculate} value="=">=</button><br></br>
           <button onClick={handleInput} value="1">1</button>
           <button onClick={handleInput} value="2">2</button>
@@ -35,7 +46,7 @@ function App() {
           <button onClick={handleInput} value="7">7</button>
           <button onClick={handleInput} value="8">8</button>
           <button onClick={handleInput} value="9">9</button><br></br>
-          <button onClick={handleInput} value=" ">C</button>
+          <button onClick={clearInput} value="">C</button>
         </div></div>
     </>
   )
