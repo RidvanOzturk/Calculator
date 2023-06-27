@@ -12,6 +12,7 @@ function App() {
   }
   const equalCalculate = () => {
     console.log(eval(operation));
+    operation==0;
   }
   useEffect(() => {
     console.log(operation);
