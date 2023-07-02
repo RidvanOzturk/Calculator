@@ -16,24 +16,8 @@ function App() {
     setOperation("");
   }
   const dividingDigits = () => {
-    // var num = setOperation;
-    // while (num !=0 ) {
-    //   digits.push(num % 10);
-    //   num = Math.trunc(num/10);
-    // }
-    // digits.reverse();
-    // console.log("digits");
-    var number = setOperation,
-    output = [],
-    sNumber = number.toString();
 
-for (var i = 0, len = sNumber.length; i < len; i += 1) {
-    output.push(+sNumber.charAt(i));
-}
-
-console.log(output);
-
-
+    setOperation(operation.slice(0, -1));
   }
   const equalCalculate = () => {
     if (operation == "") {
@@ -65,7 +49,7 @@ console.log(output);
             <button onClick={handleInput} value="-">-</button>
             <button onClick={handleInput} value="/">/</button>
             <button onClick={handleInput} value="*">*</button>
-            <Button variant="outline-danger" onClick={dividingDigits}>Danger</Button>{' '}
+            <Button variant="outline-danger" onClick={dividingDigits}>Delete</Button>{' '}
             <br></br><br></br>
             <input onChange={change} value={operation}></input><br></br>
             <button onClick={equalCalculate} value="=">=</button><br></br>
